@@ -1,0 +1,17 @@
+.btn {
+  margin-top: -3px;
+  height: 32px;
+  line-height: 20px;
+}
+#fibNumber {
+  width: 70px;
+}
+
+h1 {
+  margin-bottom: 40px;
+  font-size: 50px;
+}
+
+.input-row {
+  marign: 5%;
+}
