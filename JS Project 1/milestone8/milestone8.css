@@ -30,7 +30,6 @@ h1 {
   animation: spin 2s linear infinite;
   display: inline-block;
   vertical-align: middle;
-  visibility: hidden;
 }
 
 @keyframes spin {
@@ -103,4 +102,23 @@ hr {
   border-bottom: 2px solid black;
   margin-left: -20px;
   font-weight: 500;
+}
+
+.bold {
+  font-weight: 700;
+}
+
+.fetchResult {
+  border-bottom: 1px solid black;
+  padding-bottom: 5px;
+  width: 68%;
+  margin-bottom: 5px;
+}
+
+#resultWrapper {
+  margin-top: 20px;
+}
+
+.visibility {
+  visibility: hidden;
 }

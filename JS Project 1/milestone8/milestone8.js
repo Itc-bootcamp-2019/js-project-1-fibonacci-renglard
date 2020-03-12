@@ -4,7 +4,7 @@ let loader = document.getElementById("loader");
 let loader2 = document.getElementById("loader2");
 let error42 = document.getElementById("error-42");
 let output = document.getElementById("output");
-
+hide(loader);
 fetchNumber2();
 
 function fibonacciResult() {
@@ -14,14 +14,15 @@ function fibonacciResult() {
   let error50 = document.getElementById("errorMessage50");
 
   inputBox.classList.remove("theBox");
-  invisible(output);
-  invisible(error42);
-  invisible(error50);
-  visible(loader);
+  hide(output);
+  hide(error42);
+  hide(error50);
+
   if (isChecked) {
     if (userInput > 50) {
       error50message(error50);
     } else {
+      show(loader);
       fetch("http://localhost:5050/fibonacci/" + userInput)
         .then(response => {
           if (response.status === 400) {
@@ -33,25 +34,25 @@ function fibonacciResult() {
         .then(data => {
           console.log(data);
           if (typeof data === "object") {
-            invisible(loader);
-            visible(output);
+            hide(loader);
+            show(output);
             document.getElementById("output").innerText = data.result;
           } else {
-            invisible(loader);
+            hide(loader);
             document.getElementById("error-42").innerText =
               "Server Error: " + data;
             document.getElementById("error-42").classList.add("forty-two");
-            visible(error42);
+            show(error42);
           }
         });
     }
     fetchNumber2();
   } else {
-    visible(loader);
-    invisible(output);
+    show(loader);
+    hide(output);
     setTimeout(() => {
-      invisible(loader);
-      visible(output);
+      hide(loader);
+      show(output);
     }, 2000);
     let localOutput = fibonacci(userInput);
     document.getElementById("output").innerText = localOutput;
@@ -61,18 +62,18 @@ function fibonacciResult() {
 function error50message(error50) {
   error50.innerHTML = "Can't be larger than 50";
   error50.classList.add("errorDecoration50");
-  invisible(loader);
+  hide(loader);
   inputBox.classList.add("theBox");
-  visible(error50);
+  show(error50);
 }
 function fetchNumber2() {
-  visible(loader2);
+  show(loader2);
   fetch("http://localhost:5050/getFibonacciResults")
     .then(response => {
       return response.json();
     })
     .then(data => {
-      invisible(loader2);
+      hide(loader2);
       const results = data.results;
       pastResults(results);
     });
@@ -83,9 +84,33 @@ function pastResults(results) {
     let result = results[i].result;
     let date = new Date(results[i].createdDate);
 
-    document.getElementById("resultList").innerHTML +=
-      `<li>The Fibonnaci of <b>${name}</b> is <b>${result}</b>. Calculated at: ${date}</li>` +
-      "<hr>";
+    let resultWrapper = document.getElementById("resultWrapper");
+
+    let fetchResult = document.createElement("div");
+    fetchResult.classList.add("fetchResult");
+
+    let part1 = document.createElement("span");
+    part1.innerText = "The Fibonacci of ";
+
+    let boldNumber = document.createElement("span");
+    boldNumber.innerText = name;
+    boldNumber.classList.add("bold");
+
+    let part2 = document.createElement("span");
+    part2.innerText = " is ";
+
+    let boldResult = document.createElement("span");
+    boldResult.innerText = result;
+    boldResult.classList.add("bold");
+
+    let part3 = document.createElement("span");
+    part3.innerText = ". Calculated at: ";
+
+    let theDate = document.createElement("span");
+    theDate.innerText = date;
+
+    fetchResult.append(part1, boldNumber, part2, boldResult, part3, theDate);
+    resultWrapper.append(fetchResult);
   }
 }
 function fibonacci(x) {
@@ -106,9 +131,9 @@ function fibonacci(x) {
     return fx;
   }
 }
-function invisible(element) {
-  element.style.visibility = "hidden";
+function hide(element) {
+  element.classList.add("visibility");
 }
-function visible(element) {
-  element.style.visibility = "visible";
+function show(element) {
+  element.classList.remove("visibility");
 }
