@@ -1,0 +1,106 @@
+body {
+  margin-left: 7%;
+  margin-top: 5%;
+}
+
+.btn {
+  margin-top: -3px;
+  height: 32px;
+  line-height: 10px;
+  margin-left: 5px;
+  background-color: #0976d8;
+}
+#fibNumber {
+  width: 70px;
+}
+
+h1 {
+  margin-bottom: 40px;
+  font-size: 70px;
+}
+
+.loader {
+  border: 4px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 4px solid black;
+  border-bottom: 4px solid black;
+  border-left: 4px solid black;
+  width: 30px;
+  height: 30px;
+  animation: spin 2s linear infinite;
+  display: inline-block;
+  vertical-align: middle;
+  visibility: hidden;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.forty-two {
+  color: #da5b58;
+}
+
+.errorDecoration50 {
+  background-color: rgb(242, 222, 222);
+  color: #a94442;
+  width: 160px;
+  margin-left: 28px;
+}
+
+.theBox {
+  border: 1px solid #f05333;
+  color: #d9534f;
+}
+
+.results {
+  margin-top: 50px;
+  display: inline-block;
+  font-weight: 400;
+  font-size: 45px;
+}
+
+#resultList {
+  list-style-type: none;
+  margin-top: 30px;
+}
+
+hr {
+  width: 61%;
+  margin-left: -0.5px;
+  background-color: black;
+}
+
+.loader2 {
+  border: 4px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 4px solid black;
+  border-bottom: 4px solid black;
+  border-left: 4px solid black;
+  width: 30px;
+  height: 30px;
+  animation: spin 2s linear infinite;
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: -15px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#output {
+  border-bottom: 2px solid black;
+  margin-left: -20px;
+  font-weight: 500;
+}
