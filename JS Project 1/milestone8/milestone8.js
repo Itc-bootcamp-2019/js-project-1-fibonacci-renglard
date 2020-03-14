@@ -5,14 +5,13 @@ let loader2 = document.getElementById("loader2");
 let error42 = document.getElementById("error-42");
 let output = document.getElementById("output");
 hide(loader);
-fetchNumber2();
+fetchResultList();
 
 function fibonacciResult() {
   let userInput = document.getElementById("fibNumber");
   userInput = parseInt(userInput.value);
   let isChecked = document.getElementById("form-check").checked;
   let error50 = document.getElementById("errorMessage50");
-
   inputBox.classList.remove("theBox");
   hide(output);
   hide(error42);
@@ -46,7 +45,7 @@ function fibonacciResult() {
           }
         });
     }
-    fetchNumber2();
+    fetchResultList();
   } else {
     show(loader);
     hide(output);
@@ -66,7 +65,7 @@ function error50message(error50) {
   inputBox.classList.add("theBox");
   show(error50);
 }
-function fetchNumber2() {
+function fetchResultList() {
   show(loader2);
   fetch("http://localhost:5050/getFibonacciResults")
     .then(response => {
@@ -79,7 +78,7 @@ function fetchNumber2() {
     });
 }
 function pastResults(results) {
-  for (i = 0; i < results.length; i++) {
+  for (let i = 0; i < results.length; i++) {
     let name = results[i].number;
     let result = results[i].result;
     let date = new Date(results[i].createdDate);
